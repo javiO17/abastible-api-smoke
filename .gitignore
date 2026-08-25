@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+
+# Reportes generados
+reports/
+newman/
+
+# Variables / secretos
+.env
+.env.*
+
+# Logs
+*.log
+
+# macOS
+.DS_Store

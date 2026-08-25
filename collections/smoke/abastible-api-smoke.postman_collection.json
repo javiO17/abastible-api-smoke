@@ -1,0 +1,880 @@
+{
+  "info": {
+    "_postman_id": "3967d654-dcfb-4b03-912c-4f7d00be8732",
+    "name": "Abastible API - Smoke",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48921625",
+    "_collection_link": "https://go.postman.co/collection/48921625-3967d654-dcfb-4b03-912c-4f7d00be8732?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "01 - Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "// ==============================",
+              "// Validaciones de contrato",
+              "// ==============================",
+              "",
+              "pm.test(\"La respuesta contiene los campos obligatorios\", () => {",
+              "    pm.expect(response).to.include.all.keys(",
+              "        \"accessToken\",",
+              "        \"refreshToken\",",
+              "        \"userId\"",
+              "    );",
+              "});",
+              "",
+              "pm.test(\"Los campos principales tienen valores\", () => {",
+              "    pm.expect(response.accessToken).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(response.refreshToken).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(response.userId).to.be.a(\"string\").and.not.empty;",
+              "});",
+              "",
+              "// ==============================",
+              "// Validaciones de negocio",
+              "// ==============================",
+              "",
+              "pm.test(\"El tokenType es Bearer\", () => {",
+              "    pm.expect(response.tokenType).to.eql(\"Bearer\");",
+              "});",
+              "",
+              "pm.test(\"El accessToken tiene formato JWT\", () => {",
+              "    pm.expect(response.accessToken.split(\".\")).to.have.lengthOf(3);",
+              "});",
+              "",
+              "pm.test(\"El userId tiene formato UUID\", () => {",
+              "    pm.expect(response.userId).to.match(",
+              "        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i",
+              "    );",
+              "});",
+              "",
+              "// ==============================",
+              "// Variables para siguientes requests",
+              "// ==============================",
+              "",
+              "const variables = {",
+              "    token: response.accessToken,",
+              "    refreshToken: response.refreshToken,",
+              "    userId: response.userId",
+              "};",
+              "",
+              "Object.entries(variables).forEach(([key, value]) => {",
+              "    if (value !== undefined && value !== null) {",
+              "        pm.environment.set(key, value);",
+              "    }",
+              "});",
+              "",
+              "// ==============================",
+              "// Validación de persistencia",
+              "// ==============================",
+              "",
+              "pm.test(\"Variables de autenticación guardadas correctamente\", () => {",
+              "    Object.entries(variables).forEach(([key, value]) => {",
+              "        pm.expect(pm.environment.get(key)).to.eql(value);",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\",\n  \"deviceId\": \"{{deviceId}}\",\n  \"appVersion\": \"{{appVersion}}\",\n  \"forceLogin\": false\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/auth",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "seguridad",
+            "api",
+            "v1",
+            "usuarios",
+            "auth"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "02 - Obtener usuario",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();",
+              "const data = response.data;",
+              "",
+              "// ==============================",
+              "// Validaciones de contrato",
+              "// ==============================",
+              "",
+              "pm.test(\"La respuesta contiene data\", () => {",
+              "    pm.expect(response).to.have.property(\"data\");",
+              "    pm.expect(data).to.be.an(\"object\");",
+              "});",
+              "",
+              "pm.test(\"data contiene los campos obligatorios\", () => {",
+              "    pm.expect(data).to.include.all.keys(",
+              "        \"userId\",",
+              "        \"username\",",
+              "        \"customerId\",",
+              "        \"phoneNumber\",",
+              "        \"email\",",
+              "        \"enable\"",
+              "    );",
+              "});",
+              "",
+              "pm.test(\"Los campos principales tienen valores\", () => {",
+              "    pm.expect(data.userId).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(data.username).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(data.customerId).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(data.phoneNumber).to.be.a(\"string\").and.not.empty;",
+              "});",
+              "",
+              "// ==============================",
+              "// Validaciones de negocio",
+              "// ==============================",
+              "",
+              "pm.test(\"El usuario está habilitado\", () => {",
+              "    pm.expect(data.enable).to.be.true;",
+              "});",
+              "",
+              "pm.test(\"El email está verificado\", () => {",
+              "    pm.expect(data.email).to.be.an(\"object\");",
+              "    pm.expect(data.email.verified).to.be.true;",
+              "});",
+              "",
+              "pm.test(\"El usuario retornado corresponde al usuario autenticado\", () => {",
+              "    pm.expect(data.userId)",
+              "        .to.eql(pm.environment.get(\"userId\"));",
+              "});",
+              "",
+              "pm.test(\"El userId tiene formato UUID\", () => {",
+              "    pm.expect(data.userId).to.match(",
+              "        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i",
+              "    );",
+              "});",
+              "",
+              "pm.test(\"El teléfono tiene formato chileno\", () => {",
+              "    pm.expect(data.phoneNumber).to.match(/^\\+56/);",
+              "});",
+              "",
+              "pm.test(\"El customerId retornado por usuarios-api tiene formato de RUT\", () => {",
+              "    pm.expect(data.customerId).to.match(/^\\d{7,8}-[\\dkK]$/);",
+              "});",
+              "",
+              "// ==============================",
+              "// Variables para siguientes requests",
+              "// ==============================",
+              "",
+              "const variables = {",
+              "    userId: data.userId,",
+              "",
+              "    // usuarios-api expone el RUT bajo el nombre \"customerId\".",
+              "    // Se guarda como \"rut\" para no sobrescribir el customerId UUID",
+              "    // que se obtendrá posteriormente desde clientes-api.",
+              "    rut: data.customerId,",
+              "",
+              "    phoneNumber: data.phoneNumber",
+              "};",
+              "",
+              "if (data.email?.value) {",
+              "    variables.email = data.email.value;",
+              "}",
+              "",
+              "Object.entries(variables).forEach(([key, value]) => {",
+              "    if (value !== undefined && value !== null) {",
+              "        pm.environment.set(key, value);",
+              "    }",
+              "});",
+              "",
+              "// ==============================",
+              "// Validación de persistencia",
+              "// ==============================",
+              "",
+              "pm.test(\"Variables del usuario guardadas correctamente\", () => {",
+              "    Object.entries(variables).forEach(([key, value]) => {",
+              "        pm.expect(pm.environment.get(key)).to.eql(value);",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:id",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "seguridad",
+            "api",
+            "v1",
+            "usuarios",
+            ":id"
+          ],
+          "variable": [
+            {
+              "key": "id",
+              "value": "{{userId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "03 - Obtener customerId",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "// ==============================",
+              "// Validaciones de contrato",
+              "// ==============================",
+              "pm.test(\"customerId tiene un valor válido\", () => {",
+              "    pm.expect(response.customerId)",
+              "        .to.be.a(\"string\")",
+              "        .and.not.empty;",
+              "});",
+              "",
+              "pm.test(\"La respuesta contiene exists y customerId\", () => {",
+              "    pm.expect(response).to.include.all.keys(",
+              "        \"exists\",",
+              "        \"customerId\"",
+              "    );",
+              "});",
+              "",
+              "// ==============================",
+              "// Validaciones de negocio",
+              "//",
+              "pm.test(\"El customer existe\", () => {",
+              "    pm.expect(response.exists).to.be.true;",
+              "});",
+              "",
+              "pm.test(\"customerId tiene formato UUID\", () => {",
+              "    pm.expect(response.customerId)",
+              "        .to.match(",
+              "            /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i",
+              "        );",
+              "});",
+              "",
+              "// ==============================",
+              "// Variables para siguientes requests",
+              "// ==============================",
+              "",
+              "const variables = {",
+              "    customerId: response.customerId",
+              "};",
+              "",
+              "Object.entries(variables).forEach(([key, value]) => {",
+              "    if (value !== undefined && value !== null) {",
+              "        pm.environment.set(key, value);",
+              "    }",
+              "});",
+              "",
+              "// ==============================",
+              "// Validación de persistencia",
+              "// ==============================",
+              "",
+              "pm.test(\"Variables guardadas correctamente\", () => {",
+              "    Object.entries(variables).forEach(([key, value]) => {",
+              "        pm.expect(pm.environment.get(key))",
+              "            .to.eql(value);",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/phones/exists?phoneNumber={{phoneNumber}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "comercial",
+            "api",
+            "v1",
+            "clientes",
+            "customers",
+            "phones",
+            "exists"
+          ],
+          "query": [
+            {
+              "key": "phoneNumber",
+              "value": "{{phoneNumber}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "04 - Sincronizar direcciones",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "// ==============================",
+              "// Validaciones de contrato",
+              "// ==============================",
+              "",
+              "pm.test(\"La respuesta contiene el campo result\", () => {",
+              "    pm.expect(response).to.have.property(\"result\");",
+              "});",
+              "",
+              "pm.test(\"El campo result tiene un valor válido\", () => {",
+              "    pm.expect(response.result)",
+              "        .to.be.a(\"string\")",
+              "        .and.not.empty;",
+              "});",
+              "",
+              "// ==============================",
+              "// Validaciones de negocio",
+              "// ==============================",
+              "",
+              "pm.test(\"La sincronización fue completada\", () => {",
+              "    pm.expect(response.result)",
+              "        .to.eql(\"Sincronizacion completada\");",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/sync/:customerId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "comercial",
+            "api",
+            "v1",
+            "clientes",
+            "addresses",
+            "sync",
+            ":customerId"
+          ],
+          "variable": [
+            {
+              "key": "customerId",
+              "value": "{{customerId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "05 - Obtener direcciones",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();",
+              "const addresses = response.addresses;",
+              "",
+              "// ==============================",
+              "// Validaciones de contrato",
+              "// ==============================",
+              "",
+              "pm.test(\"La respuesta contiene un arreglo de direcciones\", () => {",
+              "    pm.expect(response).to.have.property(\"addresses\");",
+              "    pm.expect(response.addresses).to.be.an(\"array\");",
+              "});",
+              "",
+              "pm.test(\"El cliente posee al menos una dirección\", () => {",
+              "    pm.expect(addresses.length).to.be.greaterThan(0);",
+              "});",
+              "",
+              "const address =",
+              "    addresses.find(a => a.favorite === true) || addresses[0];",
+              "",
+              "pm.test(\"La dirección contiene los campos obligatorios\", () => {",
+              "    pm.expect(address).to.include.all.keys(",
+              "        \"addressId\",",
+              "        \"address\",",
+              "        \"favorite\",",
+              "        \"city\",",
+              "        \"state\",",
+              "        \"country\"",
+              "    );",
+              "});",
+              "",
+              "pm.test(\"Los campos principales tienen valores\", () => {",
+              "    pm.expect(address.addressId).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(address.address).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(address.city).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(address.country).to.be.a(\"string\").and.not.empty;",
+              "});",
+              "",
+              "// ==============================",
+              "// Validaciones de negocio",
+              "// ==============================",
+              "",
+              "pm.test(\"addressId tiene formato UUID\", () => {",
+              "    pm.expect(address.addressId).to.match(",
+              "        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i",
+              "    );",
+              "});",
+              "",
+              "pm.test(\"El país corresponde a Chile\", () => {",
+              "    pm.expect(address.country).to.eql(\"Chile\");",
+              "});",
+              "",
+              "pm.test(\"La ciudad tiene información\", () => {",
+              "    pm.expect(address.city).to.be.a(\"string\").and.not.empty;",
+              "});",
+              "",
+              "// ==============================",
+              "// Variables para siguientes requests",
+              "// ==============================",
+              "",
+              "const variables = {",
+              "    addressId: address.addressId",
+              "};",
+              "",
+              "Object.entries(variables).forEach(([key, value]) => {",
+              "    if (value !== undefined && value !== null) {",
+              "        pm.environment.set(key, value);",
+              "    }",
+              "});",
+              "",
+              "// ==============================",
+              "// Validación de persistencia",
+              "// ==============================",
+              "",
+              "pm.test(\"Variables guardadas correctamente\", () => {",
+              "    Object.entries(variables).forEach(([key, value]) => {",
+              "        pm.expect(pm.environment.get(key))",
+              "            .to.eql(value);",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/:customerId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "comercial",
+            "api",
+            "v1",
+            "clientes",
+            "addresses",
+            ":customerId"
+          ],
+          "variable": [
+            {
+              "key": "customerId",
+              "value": "{{customerId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "06 - Obtener dirección por Id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "// ==============================",
+              "// Validaciones de contrato",
+              "// ==============================",
+              "",
+              "pm.test(\"La respuesta contiene los campos obligatorios\", () => {",
+              "    pm.expect(response).to.include.all.keys(",
+              "        \"addressId\",",
+              "        \"address\",",
+              "        \"favorite\",",
+              "        \"city\",",
+              "        \"state\",",
+              "        \"country\"",
+              "    );",
+              "});",
+              "",
+              "pm.test(\"Los campos principales tienen valores\", () => {",
+              "    pm.expect(response.addressId).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(response.address).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(response.city).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(response.country).to.be.a(\"string\").and.not.empty;",
+              "});",
+              "",
+              "// ==============================",
+              "// Validaciones de negocio",
+              "// ==============================",
+              "",
+              "pm.test(\"El addressId corresponde al solicitado\", () => {",
+              "    pm.expect(response.addressId)",
+              "        .to.eql(pm.environment.get(\"addressId\"));",
+              "});",
+              "",
+              "pm.test(\"El país corresponde a Chile\", () => {",
+              "    pm.expect(response.country).to.eql(\"Chile\");",
+              "});",
+              "",
+              "pm.test(\"El addressId tiene formato UUID\", () => {",
+              "    pm.expect(response.addressId).to.match(",
+              "        /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i",
+              "    );",
+              "});",
+              "",
+              "const normalizeText = (value) =>",
+              "    value",
+              "        .normalize(\"NFD\")",
+              "        .replace(/[\\u0300-\\u036f]/g, \"\")",
+              "        .toLowerCase()",
+              "        .trim();",
+              "",
+              "// ==============================",
+              "// Variables para siguientes requests",
+              "// ==============================",
+              "",
+              "const variables = {",
+              "    alias: response.alias,",
+              "    city: response.city,",
+              "    state: response.state,",
+              "    country: response.country,",
+              "    salesforceId: response.salesforceId,",
+              "    comuna: normalizeText(response.city)",
+              "};",
+              "",
+              "Object.entries(variables).forEach(([key, value]) => {",
+              "    if (value !== undefined && value !== null) {",
+              "        pm.environment.set(key, value);",
+              "    }",
+              "});",
+              "",
+              "// ==============================",
+              "// Validación de persistencia",
+              "// ==============================",
+              "",
+              "pm.test(\"Variables guardadas correctamente\", () => {",
+              "    Object.entries(variables).forEach(([key, value]) => {",
+              "        if (value !== undefined && value !== null) {",
+              "            pm.expect(pm.environment.get(key)).to.eql(value);",
+              "        }",
+              "    });",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/address/:addressId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "comercial",
+            "api",
+            "v1",
+            "clientes",
+            "addresses",
+            "address",
+            ":addressId"
+          ],
+          "variable": [
+            {
+              "key": "addressId",
+              "value": "{{addressId}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "07 - Obtener productos disponibles",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const response = pm.response.json();",
+              "",
+              "// ==============================",
+              "// Validaciones de contrato",
+              "// ==============================",
+              "",
+              "pm.test(\"La respuesta es un arreglo\", () => {",
+              "    pm.expect(response).to.be.an(\"array\");",
+              "});",
+              "",
+              "pm.test(\"Existen productos disponibles\", () => {",
+              "    pm.expect(response.length).to.be.greaterThan(0);",
+              "});",
+              "",
+              "const product = response[0];",
+              "",
+              "pm.test(\"El producto contiene los campos obligatorios\", () => {",
+              "    pm.expect(product).to.include.all.keys(",
+              "        \"code\",",
+              "        \"nombre\",",
+              "        \"precio\",",
+              "        \"kilos\",",
+              "        \"tipo\",",
+              "        \"descripcion\"",
+              "    );",
+              "});",
+              "",
+              "pm.test(\"Los campos principales tienen valores válidos\", () => {",
+              "    pm.expect(product.code).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(product.nombre).to.be.a(\"string\").and.not.empty;",
+              "    pm.expect(product.precio).to.be.a(\"number\");",
+              "    pm.expect(product.kilos).to.be.a(\"number\");",
+              "    pm.expect(product.tipo).to.be.a(\"string\").and.not.empty;",
+              "});",
+              "",
+              "// ==============================",
+              "// Validaciones de negocio",
+              "// ==============================",
+              "",
+              "pm.test(\"El precio del producto es mayor que cero\", () => {",
+              "    pm.expect(product.precio).to.be.greaterThan(0);",
+              "});",
+              "",
+              "pm.test(\"El peso del producto es mayor que cero\", () => {",
+              "    pm.expect(product.kilos).to.be.greaterThan(0);",
+              "});",
+              "",
+              "pm.test(\"El código del producto tiene información\", () => {",
+              "    pm.expect(product.code.trim()).to.not.eql(\"\");",
+              "});",
+              "",
+              "// ==============================",
+              "// Variables para siguientes requests",
+              "// ==============================",
+              "",
+              "const variables = {",
+              "    productCode: product.code,",
+              "    productName: product.nombre,",
+              "    productPrice: product.precio,",
+              "    productKilos: product.kilos,",
+              "    productType: product.tipo",
+              "};",
+              "",
+              "Object.entries(variables).forEach(([key, value]) => {",
+              "    if (value !== undefined && value !== null) {",
+              "        pm.environment.set(key, value);",
+              "    }",
+              "});",
+              "",
+              "// ==============================",
+              "// Validación de persistencia",
+              "// ==============================",
+              "",
+              "pm.test(\"Variables guardadas correctamente\", () => {",
+              "    Object.entries(variables).forEach(([key, value]) => {",
+              "        if (value !== undefined && value !== null) {",
+              "            pm.expect(pm.environment.get(key)).to.eql(value);",
+              "        }",
+              "    });",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/ventas/api/v1/productos/:comuna",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "ventas",
+            "api",
+            "v1",
+            "productos",
+            ":comuna"
+          ],
+          "variable": [
+            {
+              "key": "comuna",
+              "value": "{{comuna}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "// ==============================",
+          "// Validaciones técnicas globales",
+          "// ==============================",
+          "",
+          "pm.test(\"HTTP Status es 200 (Global)\", () => {",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "pm.test(\"La respuesta es JSON (Global)\", () => {",
+          "    pm.response.to.be.json;",
+          "});",
+          ""
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,7013 @@
+{
+  "info": {
+    "name": "Abastible Nueva App - APIs (QA)",
+    "_postman_id": "be8d1e67-274e-4ca8-8dfe-4d2f50e8d72b",
+    "description": "Colección desde los controllers de los 15 microservicios (abastible-nuevapp-*). Una carpeta por repo. URLs vía gateway Apigee QA (api3). baseUrl=https://api3.abastible.cl ; para PROD usar {{baseUrlProd}}=api2 (ojo: TyC cambia de 'tyc' a 'terminos-y-condiciones'). Login: seguridad/api/v1/usuarios/auth. Generado 2026-08-20",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "pedidos-api",
+      "description": "Repo: abastible-nuevapp-pedidos-api | dominio Apigee: /ventas | endpoints: 18\nQA:  https://api3.abastible.cl/ventas/...\nPROD: https://api2.abastible.cl/ventas/...",
+      "item": [
+        {
+          "name": "GET /api/v1/pedidos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pedidos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "X-Consistency-Id",
+                "value": "{{consistencyId}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerId\": \"{{customerId}}\",\n  \"salesforceCustomerId\": \"{{salesforceCustomerId}}\",\n  \"channelId\": \"App\",\n  \"payment\": \"domicilio\",\n  \"commune\": \"{{comuna}}\",\n  \"items\": [\n    {\n      \"productId\": \"GLP-15KG\",\n      \"amount\": 1,\n      \"price\": 24990\n    }\n  ],\n  \"coupons\": [],\n  \"discounts\": [],\n  \"deliveryAddress\": \"Av. Ejemplo 1234\",\n  \"description\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pedidos/cron/auto-cancel-pending-online",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/cron/auto-cancel-pending-online",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "cron",
+                "auto-cancel-pending-online"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pedidos/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pedidos/horarios",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/horarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "horarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pedidos/iniciar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/iniciar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "iniciar"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pedidos/nuevo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/nuevo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "nuevo"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pedidos/orders/status/events/push",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/orders/status/events/push",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "orders",
+                "status",
+                "events",
+                "push"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pedidos/payments/events/push",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/payments/events/push",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "payments",
+                "events",
+                "push"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pedidos/salesforce",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/salesforce",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "salesforce"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pedidos/validar/cliente",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/validar/cliente",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "validar",
+                "cliente"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pedidos/validar/direccion",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/validar/direccion",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                "validar",
+                "direccion"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/pedidos/:orderId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pedidos/:orderId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/pedidos/:orderId",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pedidos/:orderId/cancelar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/:orderId/cancelar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                ":orderId",
+                "cancelar"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/pedidos/:orderId/metodoPago",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/:orderId/metodoPago",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                ":orderId",
+                "metodoPago"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/pedidos/:orderId/retomar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pedidos/:orderId/retomar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pedidos",
+                ":orderId",
+                "retomar"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "{{orderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "descuentos-api",
+      "description": "Repo: abastible-nuevapp-descuentos-api | dominio Apigee: /fidelizacion | endpoints: 2\nQA:  https://api3.abastible.cl/fidelizacion/...\nPROD: https://api2.abastible.cl/fidelizacion/...",
+      "item": [
+        {
+          "name": "GET /api/v1/descuentos/cliente/listar",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/descuentos/cliente/listar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "descuentos",
+                "cliente",
+                "listar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/descuentos/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/descuentos/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "descuentos",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "clientes-api",
+      "description": "Repo: abastible-nuevapp-clientes-api | dominio Apigee: /comercial | endpoints: 35\nQA:  https://api3.abastible.cl/comercial/...\nPROD: https://api2.abastible.cl/comercial/...",
+      "item": [
+        {
+          "name": "POST /api/v1/clientes/addresses",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/addresses/address/:addressId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/address/:addressId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses",
+                "address",
+                ":addressId"
+              ],
+              "variable": [
+                {
+                  "key": "addressId",
+                  "value": "{{addressId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/addresses/simple",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/simple",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses",
+                "simple"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/addresses/sync/:customerId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/sync/:customerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses",
+                "sync",
+                ":customerId"
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/clientes/addresses/:addressId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/:addressId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses",
+                ":addressId"
+              ],
+              "variable": [
+                {
+                  "key": "addressId",
+                  "value": "{{addressId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/clientes/addresses/:addressId/favorite",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/:addressId/favorite",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses",
+                ":addressId",
+                "favorite"
+              ],
+              "variable": [
+                {
+                  "key": "addressId",
+                  "value": "{{addressId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/addresses/:customerId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/:customerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses",
+                ":customerId"
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/addresses/:direccionSalesforceId/validate",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/addresses/:direccionSalesforceId/validate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "addresses",
+                ":direccionSalesforceId",
+                "validate"
+              ],
+              "variable": [
+                {
+                  "key": "direccionSalesforceId",
+                  "value": "{{addressId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/biometric/challenge",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/biometric/challenge",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "biometric",
+                "challenge"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/biometric/register-device",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/biometric/register-device",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "biometric",
+                "register-device"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/biometric/verify",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/biometric/verify",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "biometric",
+                "verify"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/cards",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/cards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "cards"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers/cards",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/cards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "cards"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/cards/:paymentMethodId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/cards/:paymentMethodId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "cards",
+                ":paymentMethodId"
+              ],
+              "variable": [
+                {
+                  "key": "paymentMethodId",
+                  "value": "{{paymentMethodId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/check",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "check"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers/device/:deviceId/challenge-key",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/device/:deviceId/challenge-key",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "device",
+                ":deviceId",
+                "challenge-key"
+              ],
+              "variable": [
+                {
+                  "key": "deviceId",
+                  "value": "{{deviceId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/clientes/customers/device/:deviceId/session-revoked",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/device/:deviceId/session-revoked",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "device",
+                ":deviceId",
+                "session-revoked"
+              ],
+              "variable": [
+                {
+                  "key": "deviceId",
+                  "value": "{{deviceId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/identity-status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/identity-status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "identity-status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers/identity-validation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/identity-validation",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "identity-validation"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/phones/exists",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/phones/exists",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "phones",
+                "exists"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers/prospects",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/prospects",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "prospects"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers/toku/:customerId/customerId",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/toku/:customerId/customerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                "toku",
+                ":customerId",
+                "customerId"
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/v1/clientes/customers/:customerId",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/:customerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                ":customerId"
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/:customerId/customer/:deviceId/device",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/:customerId/customer/:deviceId/device",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                ":customerId",
+                "customer",
+                ":deviceId",
+                "device"
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}"
+                },
+                {
+                  "key": "deviceId",
+                  "value": "{{deviceId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers/:customerId/customer/:deviceId/device",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/:customerId/customer/:deviceId/device",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                ":customerId",
+                "customer",
+                ":deviceId",
+                "device"
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}"
+                },
+                {
+                  "key": "deviceId",
+                  "value": "{{deviceId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/customers/:customerId/device-challenge/validate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/:customerId/device-challenge/validate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                ":customerId",
+                "device-challenge",
+                "validate"
+              ],
+              "variable": [
+                {
+                  "key": "customerId",
+                  "value": "{{customerId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/clientes/customers/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/customers/:phoneNumber/phonenumber",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/customers/:phoneNumber/phonenumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "customers",
+                ":phoneNumber",
+                "phonenumber"
+              ],
+              "variable": [
+                {
+                  "key": "phoneNumber",
+                  "value": "{{phoneNumber}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/devices",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/devices",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "devices"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/clientes/devices/blocked",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/devices/blocked",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "devices",
+                "blocked"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/devices/blocked/check",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/devices/blocked/check",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "devices",
+                "blocked",
+                "check"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/clientes/version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/comercial/api/v1/clientes/version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "comercial",
+                "api",
+                "v1",
+                "clientes",
+                "version"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "pagos-api",
+      "description": "Repo: abastible-nuevapp-pagos-api | dominio Apigee: /ventas | endpoints: 36\nQA:  https://api3.abastible.cl/ventas/...\nPROD: https://api2.abastible.cl/ventas/...",
+      "item": [
+        {
+          "name": "GET /api/v1/pagos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/audit/:customerRut",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/audit/:customerRut",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "audit",
+                ":customerRut"
+              ],
+              "variable": [
+                {
+                  "key": "customerRut",
+                  "value": "{{customerRut}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/card-inscription/card-brand-images",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/card-brand-images",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "card-brand-images"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/card-inscription/card-brand-images",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/card-brand-images",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "card-brand-images"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/pagos/card-inscription/card-brand-images/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/card-brand-images/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "card-brand-images",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/card-inscription/card-brand-images/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/card-brand-images/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "card-brand-images",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/pagos/card-inscription/card-brand-images/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/card-brand-images/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "card-brand-images",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/card-inscription/cards",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/cards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "cards"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/card-inscription/cards/:paymentMethodId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/cards/:paymentMethodId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "cards",
+                ":paymentMethodId"
+              ],
+              "variable": [
+                {
+                  "key": "paymentMethodId",
+                  "value": "{{paymentMethodId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/pagos/card-inscription/cards/:paymentMethodId/favorite",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/cards/:paymentMethodId/favorite",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "cards",
+                ":paymentMethodId",
+                "favorite"
+              ],
+              "variable": [
+                {
+                  "key": "paymentMethodId",
+                  "value": "{{paymentMethodId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/card-inscription/url",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/url",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                "url"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/pagos/card-inscription/:paymentMethodId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/card-inscription/:paymentMethodId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "card-inscription",
+                ":paymentMethodId"
+              ],
+              "variable": [
+                {
+                  "key": "paymentMethodId",
+                  "value": "{{paymentMethodId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/metodos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/metodos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "metodos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/metodos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/metodos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "metodos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/metodos/:paymentMethodId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/metodos/:paymentMethodId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "metodos",
+                ":paymentMethodId"
+              ],
+              "variable": [
+                {
+                  "key": "paymentMethodId",
+                  "value": "{{paymentMethodId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/metodos/:paymentMethodId/disable",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/metodos/:paymentMethodId/disable",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "metodos",
+                ":paymentMethodId",
+                "disable"
+              ],
+              "variable": [
+                {
+                  "key": "paymentMethodId",
+                  "value": "{{paymentMethodId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/metodos/:paymentMethodId/enable",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/metodos/:paymentMethodId/enable",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "metodos",
+                ":paymentMethodId",
+                "enable"
+              ],
+              "variable": [
+                {
+                  "key": "paymentMethodId",
+                  "value": "{{paymentMethodId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/processing",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/processing",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "processing"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/proveedores",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/proveedores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "proveedores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/proveedores",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/proveedores",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "proveedores"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/proveedores/:paymentProviderId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/proveedores/:paymentProviderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "proveedores",
+                ":paymentProviderId"
+              ],
+              "variable": [
+                {
+                  "key": "paymentProviderId",
+                  "value": "{{paymentProviderId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/pagos/proveedores/:paymentProviderId",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/proveedores/:paymentProviderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "proveedores",
+                ":paymentProviderId"
+              ],
+              "variable": [
+                {
+                  "key": "paymentProviderId",
+                  "value": "{{paymentProviderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/proveedores/:paymentProviderId/activate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/proveedores/:paymentProviderId/activate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "proveedores",
+                ":paymentProviderId",
+                "activate"
+              ],
+              "variable": [
+                {
+                  "key": "paymentProviderId",
+                  "value": "{{paymentProviderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/proveedores/:paymentProviderId/deactivate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/proveedores/:paymentProviderId/deactivate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "proveedores",
+                ":paymentProviderId",
+                "deactivate"
+              ],
+              "variable": [
+                {
+                  "key": "paymentProviderId",
+                  "value": "{{paymentProviderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/start-payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/start-payment",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "start-payment"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/webhook/order-status-refund",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/webhook/order-status-refund",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "webhook",
+                "order-status-refund"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/webhook/pago-completado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/webhook/pago-completado",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "webhook",
+                "pago-completado"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/webhook/salesforce",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/webhook/salesforce",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "webhook",
+                "salesforce"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/webhook/:provider",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/webhook/:provider",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                "webhook",
+                ":provider"
+              ],
+              "variable": [
+                {
+                  "key": "provider",
+                  "value": "{{provider}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/pagos/:paymentId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/:paymentId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                ":paymentId"
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "{{paymentId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/:paymentId/authorize",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/:paymentId/authorize",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                ":paymentId",
+                "authorize"
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "{{paymentId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/:paymentId/expire",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/:paymentId/expire",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                ":paymentId",
+                "expire"
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "{{paymentId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/:paymentId/fail",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/:paymentId/fail",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                ":paymentId",
+                "fail"
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "{{paymentId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/pagos/:paymentId/refuse",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/pagos/:paymentId/refuse",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "pagos",
+                ":paymentId",
+                "refuse"
+              ],
+              "variable": [
+                {
+                  "key": "paymentId",
+                  "value": "{{paymentId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "identidad-api",
+      "description": "Repo: abastible-nuevapp-identidad-api | dominio Apigee: /seguridad | endpoints: 24\nQA:  https://api3.abastible.cl/seguridad/...\nPROD: https://api2.abastible.cl/seguridad/...",
+      "item": [
+        {
+          "name": "GET /api/v1/identidad",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/admin/channels",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/channels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "channels"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/admin/channels",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/channels",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "channels"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/admin/channels/:channelId/providers-config",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/channels/:channelId/providers-config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "channels",
+                ":channelId",
+                "providers-config"
+              ],
+              "variable": [
+                {
+                  "key": "channelId",
+                  "value": "{{channelId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/identidad/admin/channels/:channelId/providers-config",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/channels/:channelId/providers-config",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "channels",
+                ":channelId",
+                "providers-config"
+              ],
+              "variable": [
+                {
+                  "key": "channelId",
+                  "value": "{{channelId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/identidad/admin/channels/:channelId/providers-config/:providerId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/channels/:channelId/providers-config/:providerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "channels",
+                ":channelId",
+                "providers-config",
+                ":providerId"
+              ],
+              "variable": [
+                {
+                  "key": "channelId",
+                  "value": "{{channelId}}"
+                },
+                {
+                  "key": "providerId",
+                  "value": "{{providerId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/v1/identidad/admin/channels/:channelId/status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/channels/:channelId/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "channels",
+                ":channelId",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "channelId",
+                  "value": "{{channelId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/admin/providers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/providers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "providers"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/admin/providers",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/providers",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "providers"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/identidad/admin/providers/:providerId",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/admin/providers/:providerId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "admin",
+                "providers",
+                ":providerId"
+              ],
+              "variable": [
+                {
+                  "key": "providerId",
+                  "value": "{{providerId}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/business-logs/application/json",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/business-logs/application/json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "business-logs",
+                "application",
+                "json"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/business-logs/count",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/business-logs/count",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "business-logs",
+                "count"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/complete",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/complete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "complete"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/debug/swagger-enabled",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/debug/swagger-enabled",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "debug",
+                "swagger-enabled"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/phone-verifications",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/phone-verifications",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "phone-verifications"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/phone-verifications/validate",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/phone-verifications/validate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "phone-verifications",
+                "validate"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/provider/toc/face-and-document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/provider/toc/face-and-document",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "provider",
+                "toc",
+                "face-and-document"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/provider/toc/face-and-token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/provider/toc/face-and-token",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "provider",
+                "toc",
+                "face-and-token"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/provider/toc/validate-identity-document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/provider/toc/validate-identity-document",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "provider",
+                "toc",
+                "validate-identity-document"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/session",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/session",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/start",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/start",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "start"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"canal\": \"App\",\n  \"tipoVerificacion\": \"phone\",\n  \"state\": \"xyz\",\n  \"customerId\": \"{{customerId}}\",\n  \"phone\": \"{{phoneNumber}}\",\n  \"redirectUri\": \"https://app/ok\",\n  \"redirectUriError\": \"https://app/err\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/identidad/swagger",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/swagger",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "swagger"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/identidad/token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/identidad/token",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "identidad",
+                "token"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"{{code}}\",\n  \"customerId\": \"{{customerId}}\",\n  \"phoneNumber\": \"{{phoneNumber}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "usuarios-api",
+      "description": "Repo: abastible-nuevapp-usuarios-api | dominio Apigee: /seguridad | endpoints: 19\nQA:  https://api3.abastible.cl/seguridad/...\nPROD: https://api2.abastible.cl/seguridad/...",
+      "item": [
+        {
+          "name": "POST /api/v1/usuarios",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ricardo Ejemplo\",\n  \"customerId\": \"{{customerId}}\",\n  \"telefono\": \"{{phoneNumber}}\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/auth",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/auth",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "auth"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{username}}\",\n  \"password\": \"{{password}}\",\n  \"deviceId\": \"{{deviceId}}\",\n  \"appVersion\": \"{{appVersion}}\",\n  \"forceLogin\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/auth/logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "auth",
+                "logout"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\",\n  \"deviceId\": \"{{deviceId}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/auth/refresh",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/auth/refresh",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "auth",
+                "refresh"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refreshToken}}\",\n  \"deviceId\": \"{{deviceId}}\",\n  \"appVersion\": \"{{appVersion}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/auth/reset-password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/auth/reset-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "auth",
+                "reset-password"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/auth/token-status",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/auth/token-status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "auth",
+                "token-status"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"token\": \"{{token}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/usuarios/check-user-email",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/check-user-email",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "check-user-email"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/confirm-forgot-password/:phoneNumber",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/confirm-forgot-password/:phoneNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "confirm-forgot-password",
+                ":phoneNumber"
+              ],
+              "variable": [
+                {
+                  "key": "phoneNumber",
+                  "value": "{{phoneNumber}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"123456\",\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/forgot-password/:phoneNumber",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/forgot-password/:phoneNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "forgot-password",
+                ":phoneNumber"
+              ],
+              "variable": [
+                {
+                  "key": "phoneNumber",
+                  "value": "{{phoneNumber}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/usuarios/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/usuarios/remove/:phoneNumber",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/remove/:phoneNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "remove",
+                ":phoneNumber"
+              ],
+              "variable": [
+                {
+                  "key": "phoneNumber",
+                  "value": "{{phoneNumber}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/reset-password/:phoneNumber",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/reset-password/:phoneNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                "reset-password",
+                ":phoneNumber"
+              ],
+              "variable": [
+                {
+                  "key": "phoneNumber",
+                  "value": "{{phoneNumber}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"{{password}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/usuarios/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/usuarios/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ricardo Ejemplo\",\n  \"email\": \"{{email}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/:id/check-validation-email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:id/check-validation-email",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                ":id",
+                "check-validation-email"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/:id/check-validation-email-change-password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:id/check-validation-email-change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                ":id",
+                "check-validation-email-change-password"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/:id/send-validation-email",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:id/send-validation-email",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                ":id",
+                "send-validation-email"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/usuarios/:id/send-validation-email-change-password",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:id/send-validation-email-change-password",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                ":id",
+                "send-validation-email-change-password"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/usuarios/:phoneNumber/phoneNumber",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/seguridad/api/v1/usuarios/:phoneNumber/phoneNumber",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "seguridad",
+                "api",
+                "v1",
+                "usuarios",
+                ":phoneNumber",
+                "phoneNumber"
+              ],
+              "variable": [
+                {
+                  "key": "phoneNumber",
+                  "value": "{{phoneNumber}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "notificaciones-api",
+      "description": "Repo: abastible-nuevapp-notificaciones-api | dominio Apigee: /marketing | endpoints: 4\nQA:  https://api3.abastible.cl/marketing/...\nPROD: https://api2.abastible.cl/marketing/...",
+      "item": [
+        {
+          "name": "GET /api/v1/notificaciones/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/notificaciones/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "notificaciones",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/notificaciones/pagos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/notificaciones/pagos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "notificaciones",
+                "pagos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/notificaciones/sms",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/notificaciones/sms",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "notificaciones",
+                "sms"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/notificaciones/version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/notificaciones/version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "notificaciones",
+                "version"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "cupones-api",
+      "description": "Repo: abastible-nuevapp-cupones-api | dominio Apigee: /fidelizacion | endpoints: 8\nQA:  https://api3.abastible.cl/fidelizacion/...\nPROD: https://api2.abastible.cl/fidelizacion/...",
+      "item": [
+        {
+          "name": "GET /api/v1/cupones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/cupones/free",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones/free",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones",
+                "free"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/cupones/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/cupones/redeem",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones/redeem",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones",
+                "redeem"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/cupones/reserve",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones/reserve",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones",
+                "reserve"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/cupones/rut",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones/rut",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones",
+                "rut"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/cupones/transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones/transfer",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones",
+                "transfer"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/cupones/version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/fidelizacion/api/v1/cupones/version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fidelizacion",
+                "api",
+                "v1",
+                "cupones",
+                "version"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "api-geolocalizacion",
+      "description": "Repo: abastible-nuevapp-api-geolocalizacion | dominio Apigee: /distribucion | endpoints: 2\nQA:  https://api3.abastible.cl/distribucion/...\nPROD: https://api2.abastible.cl/distribucion/...",
+      "item": [
+        {
+          "name": "GET /api/v1/geolocalizacion/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/geolocalizacion/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "geolocalizacion",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/geolocalizacion/version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/geolocalizacion/version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "geolocalizacion",
+                "version"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "terminos-y-condiciones-api",
+      "description": "Repo: abastible-nuevapp-terminos-y-condiciones-api | dominio Apigee: /cumplimiento | endpoints: 7\nQA:  https://api3.abastible.cl/cumplimiento/...\nPROD: https://api2.abastible.cl/cumplimiento/...\n⚠️ En QA el servicio es 'tyc'; en PROD es 'terminos-y-condiciones'.",
+      "item": [
+        {
+          "name": "GET /api/v1/terminos-y-condiciones/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cumplimiento/api/v1/tyc/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cumplimiento",
+                "api",
+                "v1",
+                "tyc",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/terminos-y-condiciones/terms/accept",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cumplimiento/api/v1/tyc/terms/accept",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cumplimiento",
+                "api",
+                "v1",
+                "tyc",
+                "terms",
+                "accept"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/terminos-y-condiciones/terms/accepted/:userId/:type/:channel",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cumplimiento/api/v1/tyc/terms/accepted/:userId/:type/:channel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cumplimiento",
+                "api",
+                "v1",
+                "tyc",
+                "terms",
+                "accepted",
+                ":userId",
+                ":type",
+                ":channel"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "{{userId}}"
+                },
+                {
+                  "key": "type",
+                  "value": "{{type}}"
+                },
+                {
+                  "key": "channel",
+                  "value": "{{channel}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/terminos-y-condiciones/terms/admin/accepted/:userId/:type",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cumplimiento/api/v1/tyc/terms/admin/accepted/:userId/:type",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cumplimiento",
+                "api",
+                "v1",
+                "tyc",
+                "terms",
+                "admin",
+                "accepted",
+                ":userId",
+                ":type"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "{{userId}}"
+                },
+                {
+                  "key": "type",
+                  "value": "{{type}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/terminos-y-condiciones/terms/admin/create",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cumplimiento/api/v1/tyc/terms/admin/create",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cumplimiento",
+                "api",
+                "v1",
+                "tyc",
+                "terms",
+                "admin",
+                "create"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/terminos-y-condiciones/terms/current/:type/:channel",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cumplimiento/api/v1/tyc/terms/current/:type/:channel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cumplimiento",
+                "api",
+                "v1",
+                "tyc",
+                "terms",
+                "current",
+                ":type",
+                ":channel"
+              ],
+              "variable": [
+                {
+                  "key": "type",
+                  "value": "{{type}}"
+                },
+                {
+                  "key": "channel",
+                  "value": "{{channel}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/terminos-y-condiciones/terms/:version/:type/:channel",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cumplimiento/api/v1/tyc/terms/:version/:type/:channel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cumplimiento",
+                "api",
+                "v1",
+                "tyc",
+                "terms",
+                ":version",
+                ":type",
+                ":channel"
+              ],
+              "variable": [
+                {
+                  "key": "version",
+                  "value": "{{version}}"
+                },
+                {
+                  "key": "type",
+                  "value": "{{type}}"
+                },
+                {
+                  "key": "channel",
+                  "value": "{{channel}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "bff-seguimiento",
+      "description": "Repo: abastible-nuevapp-bff-seguimiento | dominio Apigee: /distribucion | endpoints: 2\nQA:  https://api3.abastible.cl/distribucion/...\nPROD: https://api2.abastible.cl/distribucion/...",
+      "item": [
+        {
+          "name": "GET /bff/v1/seguimiento/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/bff/v1/seguimiento/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "bff",
+                "v1",
+                "seguimiento",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /bff/v1/seguimiento/version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/bff/v1/seguimiento/version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "bff",
+                "v1",
+                "seguimiento",
+                "version"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "banner-api",
+      "description": "Repo: abastible-nuevapp-banner-api | dominio Apigee: /marketing | endpoints: 12\nQA:  https://api3.abastible.cl/marketing/...\nPROD: https://api2.abastible.cl/marketing/...",
+      "item": [
+        {
+          "name": "GET /api/v1/banner",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/banner",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/banner/carousel",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/carousel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                "carousel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/banner/carousel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/carousel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                "carousel"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/banner/carousel/channel/:channel",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/carousel/channel/:channel",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                "carousel",
+                "channel",
+                ":channel"
+              ],
+              "variable": [
+                {
+                  "key": "channel",
+                  "value": "{{channel}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/banner/carousel/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/carousel/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                "carousel",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/banner/carousel/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/carousel/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                "carousel",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/banner/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE /api/v1/banner/:id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/banner/:id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT /api/v1/banner/:id",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/:id",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                ":id"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH /api/v1/banner/:id/status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/marketing/api/v1/banner/:id/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "marketing",
+                "api",
+                "v1",
+                "banner",
+                ":id",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "productos-api",
+      "description": "Repo: abastible-nuevapp-productos-api | dominio Apigee: /ventas | endpoints: 3\nQA:  https://api3.abastible.cl/ventas/...\nPROD: https://api2.abastible.cl/ventas/...",
+      "item": [
+        {
+          "name": "GET /api/v1/productos/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/productos/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "productos",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/productos/:comuna",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/productos/:comuna",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "productos",
+                ":comuna"
+              ],
+              "variable": [
+                {
+                  "key": "comuna",
+                  "value": "{{comuna}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/productos/:comuna/:code",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ventas/api/v1/productos/:comuna/:code",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ventas",
+                "api",
+                "v1",
+                "productos",
+                ":comuna",
+                ":code"
+              ],
+              "variable": [
+                {
+                  "key": "comuna",
+                  "value": "{{comuna}}"
+                },
+                {
+                  "key": "code",
+                  "value": "GLP-15KG"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "territorial-api",
+      "description": "Repo: abastible-nuevapp-territorial-api | dominio Apigee: /distribucion | endpoints: 10\nQA:  https://api3.abastible.cl/distribucion/...\nPROD: https://api2.abastible.cl/distribucion/...",
+      "item": [
+        {
+          "name": "GET /api/v1/territorial",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/comunas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/comunas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "comunas"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/comunas/:comuna",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/comunas/:comuna",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "comunas",
+                ":comuna"
+              ],
+              "variable": [
+                {
+                  "key": "comuna",
+                  "value": "{{comuna}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/paises",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/paises",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "paises"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/paises/:id/regiones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/paises/:id/regiones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "paises",
+                ":id",
+                "regiones"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/ping",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/ping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "ping"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/ready",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/ready",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "ready"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/regiones",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/regiones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "regiones"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/regiones/:id/comunas",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/regiones/:id/comunas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "regiones",
+                ":id",
+                "comunas"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "{{id}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/territorial/regiones/:region",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/territorial/regiones/:region",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "territorial",
+                "regiones",
+                ":region"
+              ],
+              "variable": [
+                {
+                  "key": "region",
+                  "value": "{{region}}"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "api-seguimiento",
+      "description": "Repo: abastible-nuevapp-api-seguimiento | dominio Apigee: /distribucion | endpoints: 3\nQA:  https://api3.abastible.cl/distribucion/...\nPROD: https://api2.abastible.cl/distribucion/...",
+      "item": [
+        {
+          "name": "GET /api/v1/seguimiento/health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/seguimiento/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "seguimiento",
+                "health"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST /api/v1/seguimiento/pedidos/:pedidoId",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/seguimiento/pedidos/:pedidoId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "seguimiento",
+                "pedidos",
+                ":pedidoId"
+              ],
+              "variable": [
+                {
+                  "key": "pedidoId",
+                  "value": "{{orderId}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET /api/v1/seguimiento/version",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/distribucion/api/v1/seguimiento/version",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "distribucion",
+                "api",
+                "v1",
+                "seguimiento",
+                "version"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api3.abastible.cl",
+      "type": "string"
+    },
+    {
+      "key": "baseUrlProd",
+      "value": "https://api2.abastible.cl",
+      "type": "string"
+    },
+    {
+      "key": "token",
+      "value": "<JWT_QA>",
+      "type": "string"
+    },
+    {
+      "key": "refreshToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "username",
+      "value": "26883927-5",
+      "type": "string"
+    },
+    {
+      "key": "password",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "deviceId",
+      "value": "device-ejemplo-001",
+      "type": "string"
+    },
+    {
+      "key": "appVersion",
+      "value": "1.0.0",
+      "type": "string"
+    },
+    {
+      "key": "customerId",
+      "value": "9d7f846f-e14a-43a4-b920-400b4683d8c6",
+      "type": "string"
+    },
+    {
+      "key": "salesforceCustomerId",
+      "value": "001Ro00000gll52IAA",
+      "type": "string"
+    },
+    {
+      "key": "rut",
+      "value": "26883927-5",
+      "type": "string"
+    },
+    {
+      "key": "phoneNumber",
+      "value": "933434781",
+      "type": "string"
+    },
+    {
+      "key": "email",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "orderId",
+      "value": "f6b82043-489e-4052-bc18-05e89df0d7ce",
+      "type": "string"
+    },
+    {
+      "key": "comuna",
+      "value": "nunoa",
+      "type": "string"
+    },
+    {
+      "key": "consistencyId",
+      "value": "<HMAC_BASE64>",
+      "type": "string"
+    },
+    {
+      "key": "id",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "userId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "addressId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "paymentMethodId",
+      "value": "pm_ejemplo",
+      "type": "string"
+    },
+    {
+      "key": "channelId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "providerId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "version",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "type",
+      "value": "privacidad",
+      "type": "string"
+    },
+    {
+      "key": "channel",
+      "value": "App",
+      "type": "string"
+    },
+    {
+      "key": "code",
+      "value": "123456",
+      "type": "string"
+    }
+  ]
+}
