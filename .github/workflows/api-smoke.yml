@@ -1,0 +1,42 @@
+name: API Smoke Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Postman Environment
+        env:
+          API_BASE_URL: ${{ vars.API_BASE_URL }}
+          APP_VERSION: ${{ vars.APP_VERSION }}
+          API_USERNAME: ${{ secrets.API_USERNAME }}
+          API_PASSWORD: ${{ secrets.API_PASSWORD }}
+          API_DEVICE_ID: ${{ secrets.API_DEVICE_ID }}
+        run: |
+          node scripts/update-environment.js
+
+      - name: Execute Smoke Tests
+        run: npm run smoke
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-report
+          path: reports/
