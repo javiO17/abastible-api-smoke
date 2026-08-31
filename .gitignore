@@ -1,16 +1,35 @@
-# Dependencias
+# ==========================
+# Dependencies
+# ==========================
 node_modules/
 
-# Reportes generados
+# ==========================
+# Reports
+# ==========================
 reports/
 newman/
 
-# Variables / secretos
+# ==========================
+# Environment variables
+# ==========================
 .env
 .env.*
+!.env.example
 
+# ==========================
 # Logs
+# ==========================
 *.log
 
-# macOS
+# ==========================
+# OS
+# ==========================
 .DS_Store
+
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
+# Postman local environments
+environments/smoke/*local.postman_environment.json
