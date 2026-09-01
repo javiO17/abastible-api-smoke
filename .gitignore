@@ -25,11 +25,16 @@ newman/
 # OS
 # ==========================
 .DS_Store
+**/.DS_Store
 
 # ==========================
 # IDE
 # ==========================
 .vscode/
 .idea/
+
+# ==========================
 # Postman local environments
+# ==========================
 environments/smoke/*local.postman_environment.json
+
