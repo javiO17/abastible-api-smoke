@@ -1,13 +1,14 @@
 {
   "name": "abastible-api-automation",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "API automation project for Abastible smoke and regression tests using Postman and Newman",
   "scripts": {
-    "smoke": "./scripts/smoke.sh"
+    "smoke": "./scripts/smoke.sh",
+    "newman:version": "newman --version",
+    "validate:collection": "node -e \"JSON.parse(require('fs').readFileSync('collections/smoke/abastible-api-smoke.postman_collection.json', 'utf8')); console.log('Collection JSON valid')\"",
+    "validate:environment": "node -e \"JSON.parse(require('fs').readFileSync('environments/smoke/abastible-smoke-qa.example.postman_environment.json', 'utf8')); console.log('Environment JSON valid')\""
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
